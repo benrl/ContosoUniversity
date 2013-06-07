@@ -6,6 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Data.Entity;
+using ContosoUniversity.Models;
+using ContosoUniversity.DAL;
 
 namespace ContosoUniversity
 {
@@ -33,13 +36,16 @@ namespace ContosoUniversity
 
         protected void Application_Start()
         {
+           
             AreaRegistration.RegisterAllAreas();
 
             // Use LocalDB for Entity Framework by default
+            Database.SetInitializer<SchoolContext>(new SchoolInitializer());
             Database.DefaultConnectionFactory = new SqlConnectionFactory(@"Data Source=(localdb)\v11.0; Integrated Security=True; MultipleActiveResultSets=True");
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            
         }
     }
 }
