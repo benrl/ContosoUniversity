@@ -19,3 +19,5 @@ C:\Projects\ContosoUniversity\ContosoUniversity\ContosoUniversity\bin\System.Web
 C:\Projects\ContosoUniversity\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.csprojResolveAssemblyReference.cache
 C:\Projects\ContosoUniversity\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.dll
 C:\Projects\ContosoUniversity\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.pdb
+C:\Projects\ContosoUniversity\ContosoUniversity\ContosoUniversity\bin\PagedList.dll
+C:\Projects\ContosoUniversity\ContosoUniversity\ContosoUniversity\bin\PagedList.xml
