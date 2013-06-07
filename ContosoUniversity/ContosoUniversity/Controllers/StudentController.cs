@@ -94,22 +94,35 @@ namespace ContosoUniversity.Controllers
         }
         //
         // GET: /Student/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            Student student = db.Students.Find(id);
-            return View(student);
-        }
 
+        public ActionResult Delete(int id, bool? saveChangesError)
+        {
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Unable to save changes. Try again, and if the problem persists see your system administrator.";
+            }
+            return View(db.Students.Find(id));
+        }
         //
         // POST: /Student/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            Student student = db.Students.Find(id);
-            db.Students.Remove(student);
-            db.SaveChanges();
+        {
+            try
+            {
+                Student student = db.Students.Find(id);
+                db.Students.Remove(student);
+                db.SaveChanges();
+            }
+            catch (DataException)
+            {
+                //Log the error (add a variable name after DataException)
+                return RedirectToAction("Delete",
+                    new System.Web.Routing.RouteValueDictionary { 
+                { "id", id }, 
+                { "saveChangesError", true } });
+            }
             return RedirectToAction("Index");
         }
 
